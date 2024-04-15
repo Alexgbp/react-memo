@@ -48,6 +48,14 @@
   background: #fff;
 }
 
+.levelSelected {
+  background: #ffffffa1;
+}
+.levelSelected > .levelLink {
+  color: #01547e;
+  font-weight: bold;
+}
+
 .levelLink {
   color: #0080c1;
   text-align: center;
@@ -57,8 +65,61 @@
   font-weight: 400;
   line-height: 72px;
   text-decoration: none;
+  background: transparent;
+  border: none;
 }
 
-.levelLink:visited {
-  color: #0080c1;
+.levelInput {
+  display: none;
+}
+
+.mode {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.heading {
+  color: #000000;
+  text-align: center;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family: StratosSkyeng;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 48px;
+}
+
+.input {
+  height: 24px;
+  width: 24px;
+  cursor: pointer;
+}
+
+.buttonStart {
+  margin-top: 38px;
+  width: 246px;
+  height: 48px;
+  border-radius: 12px;
+  background: #7ac100;
+  color: #fff;
+  text-align: center;
+  font-feature-settings: lining-nums proportional-nums;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family: StratosSkyeng;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+  border: none;
+  cursor: pointer;
+}
+
+.leaderboardLink {
+  font-family: StratosSkyeng;
+  font-size: 18px;
+  color: #004980;
+  line-height: 32px;
+  font-weight: 400;
 }

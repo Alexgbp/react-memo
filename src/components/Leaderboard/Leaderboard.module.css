@@ -1,0 +1,82 @@
+.leaderboardContainer {
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  font-size: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.leaderboard {
+  height: 64px;
+  background-color: #fff;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  text-align: center;
+  align-items: center;
+}
+
+.leaderboardTitle {
+  position: sticky;
+  top: 0;
+  color: #999;
+}
+
+.item {
+  width: 102px;
+  text-align: left;
+}
+
+.item_user {
+  width: 324px;
+  text-align: left;
+}
+
+.achievements__block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+
+}
+
+.achivka_block {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.achivkaYesEasyMode {
+  background-image: url(/public/images/achivka1.svg);
+}
+
+.achivkaNoEasyMode {
+  background-image: url(/public/images/achivka1_1.svg);
+}
+
+.achivkaYesSuperPower {
+  background-image: url(/public/images/achivka2.svg);
+}
+
+.achivkaNoSuperPower {
+  background-image: url(/public/images/achivka2_1.svg);
+}
+
+.achivkaNoEasyMode:hover::after {
+  z-index: 9999; 
+  content: url(/public/images/noeasymode.svg);
+  position: relative;
+  bottom: 90px;
+  left: 90px;
+}
+
+.achivkaNoSuperPower:hover::after {
+  z-index: 9999;
+  content: url(/public/images/nosuperpower.svg);
+  position: relative;
+  bottom: 90px;
+  left: 75px;
+}

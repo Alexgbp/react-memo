@@ -1,12 +1,13 @@
 .modal {
   width: 480px;
-  height: 459px;
+  padding: 40px 0;
   border-radius: 12px;
   background: #c2f5ff;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 }
 
 .image {
@@ -23,7 +24,8 @@
   font-style: normal;
   font-weight: 400;
   line-height: 48px;
-
+  width: 276px;
+  text-align: center;
   margin-bottom: 28px;
 }
 
@@ -48,4 +50,33 @@
   line-height: 72px;
 
   margin-bottom: 40px;
+}
+
+.inputName {
+  width: 276px;
+  height: 45px;
+  border-radius: 10px;
+  background: #fff;
+  border: none;
+  padding: 7px 10px;
+  margin-bottom: 28px;
+  font-family: Roboto, sans-serif;
+  color: #004980;
+  font-size: 24px;
+  text-align: center;
+}
+
+.inputName:active {
+  border: none;
+}
+
+.inputName:focus {
+  outline: none;
+}
+
+.inputName::placeholder {
+  color: #999999;
+  font-size: 24px;
+  font-family: Roboto, sans-serif;
+  text-align: center;
 }
