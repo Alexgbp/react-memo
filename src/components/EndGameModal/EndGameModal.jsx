@@ -5,7 +5,7 @@ import deadImageUrl from "./images/dead.png";
 import celebrationImageUrl from "./images/celebration.png";
 import { restart } from "../../store/slices";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { postLeader } from "../../api";
 
@@ -14,7 +14,7 @@ const getSafeString = str =>
 
 export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, onClick }) {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const pairsCount = useSelector(state => state.game.level);
   const prozrenie = useSelector(state => state.game.hintProzrenie);
   const alohomora = useSelector(state => state.game.hintAlohomora);
@@ -58,7 +58,8 @@ export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, 
           <Button
             onClick={() => {
               addLeader();
-              navigate("/");
+              // navigate("/");
+              setLeaderName("");
               dispatch(restart());
             }}
           >
