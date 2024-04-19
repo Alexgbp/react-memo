@@ -6,7 +6,7 @@ import celebrationImageUrl from "./images/celebration.png";
 import { restart } from "../../store/slices";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { postLeader } from "../../api";
 
 const getSafeString = str =>
@@ -26,6 +26,19 @@ export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, 
   const imgAlt = isWon ? "celebration emodji" : "dead emodji";
 
   const [leaderName, setLeaderName] = useState("");
+  const [err, setErr] = useState("");
+
+  // const showErrorText = async () => {
+  //   const response = await addLeader();
+  //   if (!response) {
+  //     setErr("Вы не указали имя");
+  //   }
+  //   return response;
+  // };
+
+  useEffect(() => {
+    setErr("");
+  }, [leaderName]);
 
   const addLeader = () => {
     let achi = [];
@@ -34,6 +47,9 @@ export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, 
     }
     if (!easyMode) {
       achi.push(1);
+    }
+    if (!leaderName) {
+      setErr("Вы не указали имя");
     }
     postLeader({
       name: getSafeString(leaderName),
@@ -55,6 +71,7 @@ export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, 
             value={leaderName}
             onChange={e => setLeaderName(e.target.value)}
           ></input>
+          {err && <span className={styles.errorText}>{err}</span>}
           <Button
             onClick={() => {
               addLeader();

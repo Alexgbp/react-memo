@@ -33,6 +33,6 @@ export function postLeader({ name, time, achievements }) {
     })
     .catch(error => {
       console.error("Ошибка при получении данных лидерборда:", error);
-      throw error;
+      // throw error;
     });
 }

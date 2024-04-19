@@ -10,6 +10,13 @@
   z-index: 1;
 }
 
+.errorText{
+  color: red;
+  position: fixed;
+  top: 295px;
+
+}
+
 .image {
   width: 96px;
   height: 96px;
@@ -59,7 +66,7 @@
   background: #fff;
   border: none;
   padding: 7px 10px;
-  margin-bottom: 28px;
+  margin-bottom: 36px;
   font-family: Roboto, sans-serif;
   color: #004980;
   font-size: 24px;
