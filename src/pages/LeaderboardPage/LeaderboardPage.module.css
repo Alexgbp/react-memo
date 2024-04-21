@@ -1,0 +1,17 @@
+body {
+  margin: 52px 40px;
+  font-family: Roboto, sans-serif;
+}
+  
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+  
+.title {
+  font-size: 24px;
+  color: #fff;
+}

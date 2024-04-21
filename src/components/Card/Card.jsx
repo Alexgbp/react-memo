@@ -1,6 +1,5 @@
 import { CROSS_SUIT, DIAMONDS_SUIT, HEARTS_SUIT, SPADES_SUIT } from "../../const";
 import styles from "./Card.module.css";
-
 import heartsImageUrl from "./images/hearts.svg";
 import crossImageUrl from "./images/cross.svg";
 import spadesImageUrl from "./images/spades.svg";
