@@ -83,6 +83,8 @@ export function Cards({ previewSeconds = 5 }) {
     setGameStartDate(startDate);
     setTimer(getTimerValue(startDate, null));
     setStatus(STATUS_IN_PROGRESS);
+    dispatch(setAlohomora(false));
+    dispatch(setProzrenie(false));
   }
   function resetGame() {
     setGameStartDate(null);
@@ -226,6 +228,10 @@ export function Cards({ previewSeconds = 5 }) {
     };
   }, [gameStartDate, gameEndDate]);
 
+  useEffect(() => {
+    dispatch(restart());
+  }, [dispatch]);
+
   const livesBlock = [];
 
   for (let i = 0; i < lives; i++) {
@@ -234,7 +240,7 @@ export function Cards({ previewSeconds = 5 }) {
 
   function handleProzrenie() {
     clearInterval(timerIntervalId);
-    dispatch(setProzrenie());
+    dispatch(setProzrenie(true));
     const alhomoraState = alohomora;
     dispatch(setAlohomoraPause({ state: true }));
     const temptCards = [...cards];
@@ -253,12 +259,16 @@ export function Cards({ previewSeconds = 5 }) {
   }
 
   function handleAlohomora() {
-    dispatch(setAlohomora());
+    dispatch(setAlohomora(true));
     const firstCard = cards.find(card => card.open === false);
     const newCards = cards.map(card => {
       return card.suit === firstCard.suit && card.rank === firstCard.rank ? { ...card, open: true } : card;
     });
+    const isGameOver = newCards.some(item => !item.open);
     setCards(newCards);
+    if (!isGameOver) {
+      finishGame(STATUS_WON);
+    }
   }
 
   return (
