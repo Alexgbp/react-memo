@@ -30,11 +30,11 @@ const gameSlice = createSlice({
       state.hintProzrenie = false;
       state.hintAlohomora = false;
     },
-    setProzrenie(state) {
-      state.hintProzrenie = true;
+    setProzrenie(state, action) {
+      state.hintProzrenie = action.payload;
     },
-    setAlohomora(state) {
-      state.hintAlohomora = true;
+    setAlohomora(state, action) {
+      state.hintAlohomora = action.payload;
     },
     setAlohomoraPause(state, action) {
       state.hintAlohomora = action.payload.state;

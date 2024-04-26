@@ -14,12 +14,11 @@ const getSafeString = str =>
 
 export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, onClick }) {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
   const pairsCount = useSelector(state => state.game.level);
   const prozrenie = useSelector(state => state.game.hintProzrenie);
   const alohomora = useSelector(state => state.game.hintAlohomora);
   const easyMode = useSelector(state => state.game.easyMode);
-  const isLeader = pairsCount === 9 && isWon;
+  const isLeader = pairsCount === 3 && isWon;
 
   const title = isWon ? (isLeader ? "Вы попали на Лидерборд!" : "Вы победили!") : "Вы проиграли!";
   const imgSrc = isWon ? celebrationImageUrl : deadImageUrl;
@@ -27,18 +26,17 @@ export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, 
 
   const [leaderName, setLeaderName] = useState("");
   const [err, setErr] = useState("");
-
-  // const showErrorText = async () => {
-  //   const response = await addLeader();
-  //   if (!response) {
-  //     setErr("Вы не указали имя");
-  //   }
-  //   return response;
-  // };
+  const [isResultSent, setIsResultSent] = useState(false);
 
   useEffect(() => {
     setErr("");
   }, [leaderName]);
+
+  const disabledInput = () => {
+    if (leaderName) {
+      setIsResultSent(true);
+    }
+  };
 
   const addLeader = () => {
     let achi = [];
@@ -56,14 +54,14 @@ export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, 
       time: gameDurationMinutes * 60 + gameDurationSeconds,
       achievements: achi,
     });
+    disabledInput();
   };
 
   return (
     <div className={styles.modal}>
       <img className={styles.image} src={imgSrc} alt={imgAlt} />
       <h2 className={styles.title}>{title}</h2>
-
-      {isLeader && (
+      {isLeader && !isResultSent && (
         <>
           <input
             className={styles.inputName}
@@ -75,7 +73,6 @@ export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, 
           <Button
             onClick={() => {
               addLeader();
-              // navigate("/");
               setLeaderName("");
               dispatch(restart());
             }}
